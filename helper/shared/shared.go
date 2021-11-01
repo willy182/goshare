@@ -1,4 +1,4 @@
-package lib
+package shared
 
 // AnalyzeData function
 // separation of data unique and duplicates
