@@ -1,3 +1,3 @@
-# goshare
+# Go Share
 
-## collection of multiple helpers or libraries using Golang
+## Collection of multiple helpers or libraries using Golang
