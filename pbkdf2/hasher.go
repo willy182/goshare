@@ -1,4 +1,4 @@
-package model
+package pbkdf2
 
 import (
 	"bytes"
