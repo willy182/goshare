@@ -1,6 +1,7 @@
 package shared
 
 import (
+	"encoding/base64"
 	"errors"
 	"fmt"
 	"math/rand"
@@ -376,4 +377,19 @@ func (c *collection) loadDomainList() {
 	for _, value := range goshare.DisposableDomains {
 		c.items[value] = struct{}{}
 	}
+}
+
+// RandomStringBase64 function for random string and base64 encoded
+func RandomStringBase64(length int) string {
+	rb := make([]byte, length)
+	_, err := rand.Read(rb)
+
+	if err != nil {
+		return ""
+	}
+	rs := base64.URLEncoding.EncodeToString(rb)
+
+	reg, _ := regexp.Compile("[^A-Za-z0-9]+")
+
+	return reg.ReplaceAllString(rs, "")
 }

@@ -2,6 +2,7 @@ package shared
 
 import (
 	"reflect"
+	"regexp"
 	"strings"
 	"testing"
 
@@ -293,4 +294,13 @@ func TestValidateDomain(t *testing.T) {
 		boolFalse = IsDisabledDomain("gmail.com")
 		assert.False(t, boolFalse)
 	})
+}
+
+func TestRandomStringBase64(t *testing.T) {
+	length := 8
+	randString := RandomStringBase64(length)
+	reg := regexp.MustCompile("^[A-Za-z0-9]*$")
+	b := reg.Match([]byte(randString))
+
+	assert.True(t, b, "error happens")
 }
