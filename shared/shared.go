@@ -21,16 +21,17 @@ const (
 	NUMBERS = "0123456789"
 
 	// this block is for validating URL format
-	ip           string = `(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))`
-	urlSchema    string = `((ftp|sftp|tcp|udp|wss?|https?):\/\/)`
-	urlUsername  string = `(\S+(:\S*)?@)`
-	urlPath      string = `((\/|\?|#)[^\s]*)`
-	urlPort      string = `(:(\d{1,5}))`
-	urlIP        string = `([1-9]\d?|1\d\d|2[01]\d|22[0-3])(\.(1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.([0-9]\d?|1\d\d|2[0-4]\d|25[0-4]))`
-	urlSubdomain string = `((www\.)|([a-zA-Z0-9]([-\.][-\._a-zA-Z0-9]+)*))`
-	urlPattern   string = `^` + urlSchema + `?` + urlUsername + `?` + `((` + urlIP + `|(\[` + ip + `\])|(([a-zA-Z0-9]([a-zA-Z0-9-_]+)?[a-zA-Z0-9]([-\.][a-zA-Z0-9]+)*)|(` + urlSubdomain + `?))?(([a-zA-Z\x{00a1}-\x{ffff}0-9]+-?-?)*[a-zA-Z\x{00a1}-\x{ffff}0-9]+)(?:\.([a-zA-Z\x{00a1}-\x{ffff}]{1,}))?))\.?` + urlPort + `?` + urlPath + `?$`
-	area         string = `^\+\d{1,5}$`
-	phone        string = `^\d{5,}$`
+	ip              string = `(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))`
+	urlSchema       string = `((ftp|sftp|tcp|udp|wss?|https?):\/\/)`
+	urlUsername     string = `(\S+(:\S*)?@)`
+	urlPath         string = `((\/|\?|#)[^\s]*)`
+	urlPort         string = `(:(\d{1,5}))`
+	urlIP           string = `([1-9]\d?|1\d\d|2[01]\d|22[0-3])(\.(1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.([0-9]\d?|1\d\d|2[0-4]\d|25[0-4]))`
+	urlSubdomain    string = `((www\.)|([a-zA-Z0-9]([-\.][-\._a-zA-Z0-9]+)*))`
+	urlPattern      string = `^` + urlSchema + `?` + urlUsername + `?` + `((` + urlIP + `|(\[` + ip + `\])|(([a-zA-Z0-9]([a-zA-Z0-9-_]+)?[a-zA-Z0-9]([-\.][a-zA-Z0-9]+)*)|(` + urlSubdomain + `?))?(([a-zA-Z\x{00a1}-\x{ffff}0-9]+-?-?)*[a-zA-Z\x{00a1}-\x{ffff}0-9]+)(?:\.([a-zA-Z\x{00a1}-\x{ffff}]{1,}))?))\.?` + urlPort + `?` + urlPath + `?$`
+	area            string = `^\+\d{1,5}$`
+	phone           string = `^\d{5,}$`
+	indonesianPhone string = `(\+62)?(\d{7,11})`
 )
 
 var (
@@ -45,8 +46,10 @@ var (
 	urlRegexp = regexp.MustCompile(urlPattern)
 	// areaRegexp  regex for phone area number using +
 	areaRegexp = regexp.MustCompile(area)
-	// telpRegexp regex for phone number
+	// phoneRegexp regex for phone number
 	phoneRegexp = regexp.MustCompile(phone)
+	// indonesianPhoneRegexp regex for indonesian phone number
+	indonesianPhoneRegexp = regexp.MustCompile(indonesianPhone)
 
 	// domains for list domain validate
 	domains = new(collection)
@@ -69,6 +72,14 @@ func ValidateURL(str string) error {
 // ValidatePhoneNumber function for validating phone number only
 func ValidatePhoneNumber(str string) error {
 	if !phoneRegexp.MatchString(str) {
+		return ErrBadFormatPhoneNumber
+	}
+	return nil
+}
+
+// ValidateIndonesianPhoneNumber function for validating phone number only
+func ValidateIndonesianPhoneNumber(str string) error {
+	if !indonesianPhoneRegexp.MatchString(str) {
 		return ErrBadFormatPhoneNumber
 	}
 	return nil

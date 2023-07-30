@@ -75,6 +75,28 @@ func TestValidatePhoneNumber(t *testing.T) {
 	}
 }
 
+func TestValidateIndonesianPhoneNumber(t *testing.T) {
+	var (
+		tel string
+		err error
+	)
+
+	tel = "08119889788"
+	if err = ValidateIndonesianPhoneNumber(tel); err != nil {
+		t.Fatal("testing valid phone number is not valid")
+	}
+
+	tel = "081-1988-9788"
+	if err = ValidateIndonesianPhoneNumber(tel); err == nil {
+		t.Fatal("testing 1st invalid phone number is not valid")
+	}
+
+	tel = "0811"
+	if err = ValidateIndonesianPhoneNumber(tel); err == nil {
+		t.Fatal("testing 2nd invalid phone number - not greater than 5 chars is not valid")
+	}
+}
+
 func TestValidatePhoneAreaNumber(t *testing.T) {
 	var (
 		area string
