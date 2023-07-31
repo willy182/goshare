@@ -31,7 +31,7 @@ const (
 	urlPattern      string = `^` + urlSchema + `?` + urlUsername + `?` + `((` + urlIP + `|(\[` + ip + `\])|(([a-zA-Z0-9]([a-zA-Z0-9-_]+)?[a-zA-Z0-9]([-\.][a-zA-Z0-9]+)*)|(` + urlSubdomain + `?))?(([a-zA-Z\x{00a1}-\x{ffff}0-9]+-?-?)*[a-zA-Z\x{00a1}-\x{ffff}0-9]+)(?:\.([a-zA-Z\x{00a1}-\x{ffff}]{1,}))?))\.?` + urlPort + `?` + urlPath + `?$`
 	area            string = `^\+\d{1,5}$`
 	phone           string = `^\d{5,}$`
-	indonesianPhone string = `(\+62)?(\d{7,11})`
+	indonesianPhone string = `(\+62)(\d{7,11})`
 )
 
 var (
