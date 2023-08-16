@@ -4,6 +4,7 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
+	"math"
 	"math/rand"
 	"regexp"
 	"strconv"
@@ -403,4 +404,12 @@ func RandomStringBase64(length int) string {
 	reg, _ := regexp.Compile("[^A-Za-z0-9]+")
 
 	return reg.ReplaceAllString(rs, "")
+}
+
+func ReverseSliceInt(sliceInt []int) {
+	div := int(math.Ceil(float64(len(sliceInt) / 2)))
+	length := len(sliceInt) - 1
+	for i := 0; i < div; i++ {
+		sliceInt[i], sliceInt[length-i] = sliceInt[length-i], sliceInt[i]
+	}
 }

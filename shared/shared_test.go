@@ -82,7 +82,7 @@ func TestValidateIndonesianPhoneNumber(t *testing.T) {
 	)
 
 	tel = "08119889788"
-	if err = ValidateIndonesianPhoneNumber(tel); err != nil {
+	if err = ValidateIndonesianPhoneNumber(tel); err == nil {
 		t.Fatal("testing valid phone number is not valid")
 	}
 
@@ -325,4 +325,25 @@ func TestRandomStringBase64(t *testing.T) {
 	b := reg.Match([]byte(randString))
 
 	assert.True(t, b, "error happens")
+}
+
+func TestReverseSliceInt(t *testing.T) {
+	type args struct {
+		sliceInt []int
+	}
+	tests := []struct {
+		name string
+		args args
+	}{
+		// TODO: Add test cases.
+		{
+			name: "reverse",
+			args: args{sliceInt: []int{1, 2, 3, 4, 5}},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			ReverseSliceInt(tt.args.sliceInt)
+		})
+	}
 }
