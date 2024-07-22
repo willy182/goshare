@@ -347,3 +347,63 @@ func TestReverseSliceInt(t *testing.T) {
 		})
 	}
 }
+
+func TestByteCountSI(t *testing.T) {
+	type args struct {
+		b int64
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		// TODO: Add test cases.
+		{
+			name: "lower than 1000",
+			args: args{999},
+			want: "999 B",
+		},
+		{
+			name: "greater than 1000",
+			args: args{987654321},
+			want: "987.7 MB",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := ByteCountSI(tt.args.b); got != tt.want {
+				t.Errorf("ByteCountSI() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestByteCountIEC(t *testing.T) {
+	type args struct {
+		b int64
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		// TODO: Add test cases.
+		{
+			name: "lower than 1000",
+			args: args{999},
+			want: "999 B",
+		},
+		{
+			name: "greater than 1000",
+			args: args{987654321},
+			want: "941.9 MiB",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := ByteCountIEC(tt.args.b); got != tt.want {
+				t.Errorf("ByteCountIEC() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

@@ -1,6 +1,7 @@
 package shared
 
 import (
+	cryptorand "crypto/rand"
 	"encoding/base64"
 	"errors"
 	"fmt"
@@ -237,24 +238,26 @@ func GenerateRandomID(length int, prefix ...string) string {
 
 // RandomString function for random string
 func RandomString(length int) string {
-	rand.Seed(time.Now().UTC().UnixNano())
+	seed := time.Now().UTC().UnixNano()
+	r := rand.New(rand.NewSource(seed))
 
 	charsLength := len(CHARS)
 	result := make([]byte, length)
 	for i := 0; i < length; i++ {
-		result[i] = CHARS[rand.Intn(charsLength)]
+		result[i] = CHARS[r.Intn(charsLength)]
 	}
 	return string(result)
 }
 
 // RandomNumber function for random number
 func RandomNumber(length int) string {
-	rand.Seed(time.Now().UTC().UnixNano())
+	seed := time.Now().UTC().UnixNano()
+	r := rand.New(rand.NewSource(seed))
 
 	charsLength := len(NUMBERS)
 	result := make([]byte, length)
 	for i := 0; i < length; i++ {
-		result[i] = NUMBERS[rand.Intn(charsLength)]
+		result[i] = NUMBERS[r.Intn(charsLength)]
 	}
 	return string(result)
 }
@@ -394,7 +397,7 @@ func (c *collection) loadDomainList() {
 // RandomStringBase64 function for random string and base64 encoded
 func RandomStringBase64(length int) string {
 	rb := make([]byte, length)
-	_, err := rand.Read(rb)
+	_, err := cryptorand.Read(rb)
 
 	if err != nil {
 		return ""
@@ -412,4 +415,32 @@ func ReverseSliceInt(sliceInt []int) {
 	for i := 0; i < div; i++ {
 		sliceInt[i], sliceInt[length-i] = sliceInt[length-i], sliceInt[i]
 	}
+}
+
+func ByteCountSI(b int64) string {
+	const unit = 1000
+	if b < unit {
+		return fmt.Sprintf("%d B", b)
+	}
+	div, exp := int64(unit), 0
+	for n := b / unit; n >= unit; n /= unit {
+		div *= unit
+		exp++
+	}
+	return fmt.Sprintf("%.1f %cB",
+		float64(b)/float64(div), "kMGTPE"[exp])
+}
+
+func ByteCountIEC(b int64) string {
+	const unit = 1024
+	if b < unit {
+		return fmt.Sprintf("%d B", b)
+	}
+	div, exp := int64(unit), 0
+	for n := b / unit; n >= unit; n /= unit {
+		div *= unit
+		exp++
+	}
+	return fmt.Sprintf("%.1f %ciB",
+		float64(b)/float64(div), "KMGTPE"[exp])
 }
